@@ -18,6 +18,8 @@
     class intrusive_base {
     public:
         constexpr intrusive_base() noexcept;
+        constexpr intrusive_base(const intrusive_base & rhs) noexcept;
+        intrusive_base & operator=(const intrusive_base & rhs) noexcept;
         ~intrusive_base();
     
     public:
