@@ -246,6 +246,12 @@ private:
 	}
 
 public:
+	bool unique() const volatile noexcept {
+		return _Impl_intrusive_ptr::_Ref_count_base::__unique();
+	}
+	long use_count() const volatile noexcept {
+		return _Impl_intrusive_ptr::_Ref_count_base::__get_ref();
+	}
 	// Reserve the weak observer so any further construction of intrusive_weak_ptr's cannot fail.
 	void reserve_weak() const volatile {
 		__require_weak_view();
