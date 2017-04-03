@@ -28,13 +28,13 @@
         void reserve_weak() const volatile;
     
         template<typename U = T>
-        intrusive_ptr<const volatile U> share_from_this() const volatile noexcept;
+        intrusive_ptr<const volatile U> shared_from_this() const volatile noexcept;
         template<typename U = T>
-        intrusive_ptr<const U> share_from_this() const noexcept;
+        intrusive_ptr<const U> shared_from_this() const noexcept;
         template<typename U = T>
-        intrusive_ptr<volatile U> share_from_this() volatile noexcept;
+        intrusive_ptr<volatile U> shared_from_this() volatile noexcept;
         template<typename U = T>
-        intrusive_ptr<U> share_from_this() noexcept;
+        intrusive_ptr<U> shared_from_this() noexcept;
     
         template<typename U = T>
         intrusive_weak_ptr<const volatile U> weak_from_this() const volatile;
