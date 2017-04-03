@@ -135,7 +135,8 @@
         long weak_count() const noexcept;
         template<typename U> intrusive_ptr<U> lock() const noexcept;
     
-        void reset() noexcept;
+        void reset(nullptr_t = nullptr) noexcept;
+        void reset(element_type * rhs) noexcept;
     
         void swap(intrusive_weak_ptr & rhs) noexcept;
     };

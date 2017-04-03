@@ -683,8 +683,11 @@ public:
 		return __v->template __lock<_U>();
 	}
 
-	void reset() noexcept {
+	void reset(nullptr_t = nullptr) noexcept {
 		intrusive_weak_ptr().swap(*this);
+	}
+	void reset(_T * __t) noexcept {
+		intrusive_weak_ptr(__t).swap(*this);
 	}
 
 	void swap(intrusive_weak_ptr & __r) noexcept {
