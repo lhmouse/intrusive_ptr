@@ -686,7 +686,7 @@ public:
 	void reset(nullptr_t = nullptr) noexcept {
 		intrusive_weak_ptr().swap(*this);
 	}
-	void reset(_T * __t) noexcept {
+	void reset(_T * __t){
 		intrusive_weak_ptr(__t).swap(*this);
 	}
 
