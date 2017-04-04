@@ -310,7 +310,7 @@ class intrusive_ptr {
 public:
 	using pointer      = _T *;
 	using element_type = _T;
-	using deleter_type = typename decay<decltype(*_Impl_intrusive_ptr::__locate_intrusive_base(declval<_T *>()))>::type::deleter_type;
+	using deleter_type = typename remove_pointer<decltype(_Impl_intrusive_ptr::__locate_intrusive_base(declval<_T *>()))>::type::deleter_type;
 
 private:
 	_T * __x_t;
