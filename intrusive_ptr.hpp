@@ -524,7 +524,7 @@ public:
 		return __u >= __r.__x_t;
 	}
 
-	friend void swap(const intrusive_ptr<_T> & __l, const intrusive_ptr<_T> & __r) noexcept {
+	friend void swap(intrusive_ptr<_T> & __l, intrusive_ptr<_T> & __r) noexcept {
 		__l.swap(__r);
 	}
 };
@@ -698,31 +698,31 @@ public:
 
 public:
 	template<typename _U>
-	constexpr bool operator==(const intrusive_ptr<_U> & __r) const noexcept {
+	constexpr bool operator==(const intrusive_weak_ptr<_U> & __r) const noexcept {
 		return __x_v == __r.__x_v;
 	}
 	template<typename _U>
-	constexpr bool operator!=(const intrusive_ptr<_U> & __r) const noexcept {
+	constexpr bool operator!=(const intrusive_weak_ptr<_U> & __r) const noexcept {
 		return __x_v != __r.__x_v;
 	}
 	template<typename _U>
-	constexpr bool operator<(const intrusive_ptr<_U> & __r) const noexcept {
+	constexpr bool operator<(const intrusive_weak_ptr<_U> & __r) const noexcept {
 		return __x_v < __r.__x_v;
 	}
 	template<typename _U>
-	constexpr bool operator>(const intrusive_ptr<_U> & __r) const noexcept {
+	constexpr bool operator>(const intrusive_weak_ptr<_U> & __r) const noexcept {
 		return __x_v > __r.__x_v;
 	}
 	template<typename _U>
-	constexpr bool operator<=(const intrusive_ptr<_U> & __r) const noexcept {
+	constexpr bool operator<=(const intrusive_weak_ptr<_U> & __r) const noexcept {
 		return __x_v <= __r.__x_v;
 	}
 	template<typename _U>
-	constexpr bool operator>=(const intrusive_ptr<_U> & __r) const noexcept {
+	constexpr bool operator>=(const intrusive_weak_ptr<_U> & __r) const noexcept {
 		return __x_v >= __r.__x_v;
 	}
 
-	friend void swap(intrusive_ptr<_T> & __l, intrusive_ptr<_T> & __r) noexcept {
+	friend void swap(intrusive_weak_ptr<_T> & __l, intrusive_weak_ptr<_T> & __r) noexcept {
 		__l.swap(__r);
 	}
 };
