@@ -28,8 +28,8 @@ THE SOFTWARE.
 #define __STD_INTRUSIVE_PTR_HPP
 
 #include <cassert> // assert
-#include <cstddef> // nullptr_t, size_t, ptrdiff_t
-#include <atomic> // atomic<size_t>, atomic<T *>
+#include <cstddef> // nullptr_t
+#include <atomic> // atomic<long>, atomic<T *>
 #include <memory> // default_delete, unique_ptr
 #include <exception> // terminate
 #include <utility> // declval
@@ -104,18 +104,18 @@ namespace _Impl_intrusive_ptr {
 	// Helper function template for casting from base to derived classes.
 	template<typename _R, typename _S, typename = void>
 	struct _Static_cast_or_dynamic_cast_helper {
-		constexpr _R operator()(_S &__s) const {
+		constexpr _R operator()(_S & __s) const {
 			return dynamic_cast<_R>(forward<_S>(__s));
 		}
 	};
 	template<typename _R, typename _S>
 	struct _Static_cast_or_dynamic_cast_helper<_R, _S, decltype(static_cast<void>(static_cast<_R>(declval<_S>())))> {
-		constexpr _R operator()(_S &__s) const {
+		constexpr _R operator()(_S & __s) const {
 			return static_cast<_R>(forward<_S>(__s));
 		}
 	};
 	template<typename _R, typename _S>
-	constexpr _R __static_cast_or_dynamic_cast(_S &&__s){
+	constexpr _R __static_cast_or_dynamic_cast(_S && __s){
 		return _Static_cast_or_dynamic_cast_helper<_R, _S>()(__s);
 	}
 
