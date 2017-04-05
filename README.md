@@ -213,7 +213,7 @@
 ##### `template<typename U = T> intrusive_weak_ptr<volatile U> weak_from_this() volatile;`
 ##### `template<typename U = T> intrusive_weak_ptr<U> weak_from_this();`
 
-* _Returns:_ `intrusive_weak_ptr<cv U>(shared_from_this())`, as if `shared_from_this` had never returned null pointers.
+* _Returns:_ `intrusive_weak_ptr<cv U>(shared_from_this())`, as if `shared_from_this()` had never returned a null pointer.
 * _Throws:_ Any exceptions that might be thrown by `reserve_weak()`.
 * _Post-condition:_ `weak_count()` is one greater than the value before the call.
 
