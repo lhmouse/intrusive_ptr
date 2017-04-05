@@ -390,7 +390,7 @@
 ##### `explicit intrusive_weak_ptr(element_type * rhs);`
 
 * _Effects:_ If `rhs` is not null, increments the weak reference count of `*rhs`.
-* _Throws:_ Any exceptions that might be thrown by `reserve_weak()`.
+* _Throws:_ Any exceptions that might be thrown by `rhs->reserve_weak()`.
 * _Post-condition:_ `lock().get() == rhs`. If `rhs` is not null, `rhs->weak_count()` is one greater than the value before the call.
 
 ##### `intrusive_weak_ptr(const intrusive_ptr<T> & rhs);`
