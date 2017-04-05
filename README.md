@@ -161,5 +161,62 @@
     
     }
 
-# WIP
+# Requirements of `intrusive_base`
+
+##### `constexpr intrusive_base() noexcept;`
+
+* _Post-condition:_ `use_count() == 1`.
+
+##### `constexpr intrusive_base(const intrusive_base & rhs) noexcept;`
+
+* _Effects:_ The same as `intrusive_base::intrusive_base()`.
+
+##### `intrusive_base & operator=(const intrusive_base & rhs) noexcept;`
+
+* _Effects:_ No operation.
+* _Returns:_ `*this`.
+
+##### `~intrusive_base();`
+
+* _Effects:_ If `use_count() > 1` calls `terminate()`.
+
+##### `const deleter_type & get_deleter() const noexcept;`
+##### `deleter_type & get_deleter() noexcept;`
+
+* _Returns:_ A reference to the stored deleter.
+
+##### `bool unique() const volatile noexcept;`
+
+* _Returns:_ `use_count() == 1`.
+
+##### `long use_count() const volatile noexcept;`
+
+* _Returns:_ The reference count of this object.
+
+##### `long weak_count() const volatile noexcept;`
+
+* _Returns:_ The weak reference count of this object.
+
+##### `void reserve_weak() const volatile;`
+
+* _Effects:_ Satisifies any allocation requests for resources that would be required if an `intrusive_weak_ptr` was to be constructed. Construction of `intrusive_weak_ptr` referring this object shall not throw any exceptions hereafter.
+* _Throws:_ `bad_alloc`, or an implementation-defined exception when a resource other than memory could not be obtained.
+
+##### `template<typename U = T> intrusive_ptr<const volatile U> shared_from_this() const volatile noexcept;`
+##### `template<typename U = T> intrusive_ptr<const U> shared_from_this() const noexcept;`
+##### `template<typename U = T> intrusive_ptr<volatile U> shared_from_this() volatile noexcept;`
+##### `template<typename U = T> intrusive_ptr<U> shared_from_this() noexcept;`
+
+* _Effects:_ Converts `this` to `_cv_ U *`, and if the result is not null, increments the reference count of this object.
+* _Returns:_ `intrusive_ptr<_cv_ U>(u)`, where `u` is the conversion above.
+* _Post-condition:_ `use_count()` is one greater than the value before the call.
+
+##### `template<typename U = T> intrusive_weak_ptr<const volatile U> weak_from_this() const volatile;`
+##### `template<typename U = T> intrusive_weak_ptr<const U> weak_from_this() const;`
+##### `template<typename U = T> intrusive_weak_ptr<volatile U> weak_from_this() volatile;`
+##### `template<typename U = T> intrusive_weak_ptr<U> weak_from_this();`
+
+* _Returns:_ `intrusive_weak_ptr<_cv_ U>(shared_from_this())`.
+* _Throws:_ Any exception that could be thrown by `reserve_weak()`.
+* _Post-condition:_ `weak_count()` is one greater than the value before the call.
 
