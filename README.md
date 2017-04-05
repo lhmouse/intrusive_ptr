@@ -23,6 +23,9 @@
         ~intrusive_base();
     
     public:
+        const deleter_type & get_deleter() const noexcept;
+        deleter_type & get_deleter() noexcept;
+    
         bool unique() const volatile noexcept;
         long use_count() const volatile noexcept;
         void reserve_weak() const volatile;

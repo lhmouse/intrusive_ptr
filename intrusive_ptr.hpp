@@ -164,7 +164,7 @@ namespace _Impl_intrusive_ptr {
 }
 
 template<typename _T, class _D>
-class intrusive_base : public _Impl_intrusive_ptr::_Ref_count_base {
+class intrusive_base : public _Impl_intrusive_ptr::_Ref_count_base, private _D {
 	template<typename>
 	friend class intrusive_ptr;
 	template<typename>
@@ -246,6 +246,13 @@ private:
 	}
 
 public:
+	const deleter_type & get_deleter() const noexcept {
+		return *this;
+	}
+	deleter_type & get_deleter() noexcept {
+		return *this;
+	}
+
 	bool unique() const volatile noexcept {
 		return _Impl_intrusive_ptr::_Ref_count_base::__unique();
 	}
@@ -296,6 +303,18 @@ namespace _Impl_intrusive_ptr {
 	// Helper function template for casting pointers to user-defined classes to pointers to classes instantiated from intrusive_base.
 	template<typename _T, class _D>
 	const volatile intrusive_base<_T, _D> * __locate_intrusive_base(const volatile intrusive_base<_T, _D> * __p) noexcept {
+		return __p;
+	}
+	template<typename _T, class _D>
+	const intrusive_base<_T, _D> * __locate_intrusive_base(const intrusive_base<_T, _D> * __p) noexcept {
+		return __p;
+	}
+	template<typename _T, class _D>
+	volatile intrusive_base<_T, _D> * __locate_intrusive_base(volatile intrusive_base<_T, _D> * __p) noexcept {
+		return __p;
+	}
+	template<typename _T, class _D>
+	intrusive_base<_T, _D> * __locate_intrusive_base(intrusive_base<_T, _D> * __p) noexcept {
 		return __p;
 	}
 }
@@ -377,7 +396,8 @@ public:
 		const auto __t = __x_t;
 		if(__t){
 			if(__t->_Impl_intrusive_ptr::_Ref_count_base::__drop_ref()){
-				deleter_type()(__t); // TODO: Polymorphic deleters?
+				auto __d = move(_Impl_intrusive_ptr::__locate_intrusive_base(__t)->get_deleter());
+				move(__d)(__t);
 			}
 		}
 	}
