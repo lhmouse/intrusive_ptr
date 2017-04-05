@@ -266,6 +266,7 @@
 ##### `~intrusive_ptr();`
 
 * _Effects:_ If `get()` is not null, decrements the reference count of `*get()`, and if the result is zero, deletes the object as follows:
+
         using base = intrusive_base<T, D>;
         auto d = move(get()->base::get_deleter());
         move(d)(get());
