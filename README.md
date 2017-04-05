@@ -152,7 +152,7 @@
     
     }
 
-# Requirements of `template<typename T, class D> class intrusive_base`
+# `template<typename T, class D> class intrusive_base`
 
 ##### In general
 
@@ -217,7 +217,7 @@
 * _Throws:_ Any exceptions that might be thrown by `reserve_weak()`.
 * _Post-condition:_ `weak_count()` is one greater than the value before the call.
 
-# Requirements of `template<typename T> class intrusive_ptr`
+# `template<typename T> class intrusive_ptr`
 
 ##### In general
 
@@ -376,7 +376,7 @@
 * _Effects:_ Let `u` be the result of `const_cast<U *>(src.get())`. Calls `src.release()`.
 * _Returns:_ `intrusive_ptr<U>(u)`.
 
-# Requirements of `template<typename T> class intrusive_weak_ptr`
+# `template<typename T> class intrusive_weak_ptr`
 
 ##### In general
 
