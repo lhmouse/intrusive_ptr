@@ -28,6 +28,7 @@
     
         bool unique() const volatile noexcept;
         long use_count() const volatile noexcept;
+        long weak_count() const noexcept;
         void reserve_weak() const volatile;
     
         template<typename U = T>

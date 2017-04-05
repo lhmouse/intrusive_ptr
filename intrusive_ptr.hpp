@@ -259,6 +259,13 @@ public:
 	long use_count() const volatile noexcept {
 		return _Impl_intrusive_ptr::_Ref_count_base::__get_ref();
 	}
+	long weak_count() const volatile noexcept {
+		const auto __v = __get_weak_view();
+		if(!__v){
+			return 0;
+		}
+		return __v->_Impl_intrusive_ptr::_Ref_count_base::__get_ref() - 1;
+	}
 	// Reserve the weak observer so any further construction of intrusive_weak_ptr's cannot fail.
 	void reserve_weak() const volatile {
 		__require_weak_view();
