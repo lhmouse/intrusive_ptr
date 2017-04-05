@@ -364,12 +364,12 @@
 
 ##### `template<typename U, typename T> intrusive_ptr<U> dynamic_pointer_cast(intrusive_ptr<T> src) noexcept;`
 
-* _Effects:_ Let `u` be the result of `static_cast<U *>(src.get())`. If `u` is not null, calls `src.release()`.
+* _Effects:_ Let `u` be the result of `dynamic_cast<U *>(src.get())`. If `u` is not null, calls `src.release()`.
 * _Returns:_ `intrusive_ptr<U>(u)`.
 
 ##### `template<typename U, typename T> intrusive_ptr<U> const_pointer_cast(intrusive_ptr<T> src) noexcept;`
 
-* _Effects:_ Let `u` be the result of `static_cast<U *>(src.get())`. Calls `src.release()`.
+* _Effects:_ Let `u` be the result of `const_cast<U *>(src.get())`. Calls `src.release()`.
 * _Returns:_ `intrusive_ptr<U>(u)`.
 
 # Requirements of `template<typename T> class intrusive_weak_ptr`
