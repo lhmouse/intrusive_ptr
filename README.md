@@ -166,7 +166,7 @@
 
 ##### `constexpr intrusive_base(const intrusive_base & rhs) noexcept;`
 
-* _Effects:_ The same as `intrusive_base::intrusive_base()`.
+* _Effects:_ `intrusive_base()`.
 
 ##### `intrusive_base & operator=(const intrusive_base & rhs) noexcept;`
 
