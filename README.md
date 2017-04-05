@@ -207,8 +207,8 @@
 ##### `template<typename U = T> intrusive_ptr<volatile U> shared_from_this() volatile noexcept;`
 ##### `template<typename U = T> intrusive_ptr<U> shared_from_this() noexcept;`
 
-* _Effects:_ Converts `this` to `_cv_ U *`, and if the result is not null, increments the reference count of this object.
-* _Returns:_ `intrusive_ptr<_cv_ U>(u)`, where `u` is the conversion above.
+* _Effects:_ Converts `this` to `cv U *`, and if the result is not null, increments the reference count of this object.
+* _Returns:_ `intrusive_ptr<cv U>(u)`, where `u` is the conversion above.
 * _Post-condition:_ `use_count()` is one greater than the value before the call.
 
 ##### `template<typename U = T> intrusive_weak_ptr<const volatile U> weak_from_this() const volatile;`
@@ -216,7 +216,7 @@
 ##### `template<typename U = T> intrusive_weak_ptr<volatile U> weak_from_this() volatile;`
 ##### `template<typename U = T> intrusive_weak_ptr<U> weak_from_this();`
 
-* _Returns:_ `intrusive_weak_ptr<_cv_ U>(shared_from_this())`.
+* _Returns:_ `intrusive_weak_ptr<cv U>(shared_from_this())`.
 * _Throws:_ Any exception that could be thrown by `reserve_weak()`.
 * _Post-condition:_ `weak_count()` is one greater than the value before the call.
 
