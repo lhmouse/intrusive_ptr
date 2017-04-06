@@ -128,7 +128,8 @@ namespace _Impl_intrusive_ptr {
 
 	public:
 		explicit constexpr _Weak_view_template(_T * __parent) noexcept
-			: __x_mutex(), __x_parent(__parent)
+			: _Ref_count_base()
+			, __x_mutex(), __x_parent(__parent)
 		{
 		}
 
@@ -202,7 +203,8 @@ private:
 
 public:
 	constexpr intrusive_base() noexcept
-		: _Impl_intrusive_ptr::_Ref_count_base(), __x_view(nullptr)
+		: _Impl_intrusive_ptr::_Ref_count_base(), _D()
+		, __x_view(nullptr)
 	{
 	}
 	constexpr intrusive_base(const intrusive_base &) noexcept
