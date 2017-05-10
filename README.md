@@ -1,6 +1,6 @@
 # Proposal for std::intrusive_ptr
 
-## Synopsis
+### Synopsis
 
     #include <memory>
     
@@ -152,7 +152,7 @@
     
     }
 
-# `template<typename T, class D> class intrusive_base`
+### `template<typename T, class D> class intrusive_base`
 
 ##### In general
 
@@ -217,7 +217,7 @@
 * _Throws:_ Any exceptions that might be thrown by `reserve_weak()`.
 * _Post-condition:_ `weak_count()` is one greater than the value before the call.
 
-# `template<typename T> class intrusive_ptr`
+### `template<typename T> class intrusive_ptr`
 
 ##### In general
 
