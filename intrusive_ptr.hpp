@@ -561,7 +561,7 @@ public:
 template<typename _T, typename ..._Args>
 intrusive_ptr<_T> make_intrusive(_Args &&... __args){
 	static_assert(!is_array<_T>::value, "intrusive_ptr does not accept arrays.");
-	static_assert(!is_reference<_T>::value, "ntrusive_ptr does not accept references.");
+	static_assert(!is_reference<_T>::value, "intrusive_ptr does not accept references.");
 
 	return intrusive_ptr<_T>(new _T(forward<_Args>(__args)...));
 }
@@ -574,7 +574,7 @@ intrusive_ptr<_U> static_pointer_cast(intrusive_ptr<_T> __r) noexcept {
 }
 template<typename _U, typename _T>
 intrusive_ptr<_U> dynamic_pointer_cast(intrusive_ptr<_T> __r) noexcept {
-	const auto __u = static_cast<_U>(__r.get());
+	const auto __u = dynamic_cast<_U>(__r.get());
 	if(__u){
 		__r.release();
 	}
