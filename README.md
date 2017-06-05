@@ -137,15 +137,10 @@
     };
     
     template<typename T> bool operator==(const intrusive_weak_ptr<T> & lhs, const intrusive_weak_ptr<T> & rhs) const noexcept;
-    
     template<typename T> bool operator!=(const intrusive_weak_ptr<T> & lhs, const intrusive_weak_ptr<T> & rhs) const noexcept;
-    
     template<typename T> bool operator< (const intrusive_weak_ptr<T> & lhs, const intrusive_weak_ptr<T> & rhs) const noexcept;
-    
     template<typename T> bool operator> (const intrusive_weak_ptr<T> & lhs, const intrusive_weak_ptr<T> & rhs) const noexcept;
-    
     template<typename T> bool operator<=(const intrusive_weak_ptr<T> & lhs, const intrusive_weak_ptr<T> & rhs) const noexcept;
-    
     template<typename T> bool operator>=(const intrusive_weak_ptr<T> & lhs, const intrusive_weak_ptr<T> & rhs) const noexcept;
     
     template<typename T> void swap(intrusive_ptr<T> & lhs, intrusive_ptr<T> & rhs) noexcept;
