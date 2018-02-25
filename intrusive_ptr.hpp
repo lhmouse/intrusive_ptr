@@ -97,7 +97,7 @@ namespace _Impl_intrusive_ptr {
 		bool __drop_ref() const volatile noexcept {
 			assert(__x_ref.load(memory_order_relaxed) > 0);
 
-			return __x_ref.fetch_sub(1, memory_order_relaxed) == 1;
+			return __x_ref.fetch_sub(1, memory_order_acq_rel) == 1;
 		}
 	};
 
